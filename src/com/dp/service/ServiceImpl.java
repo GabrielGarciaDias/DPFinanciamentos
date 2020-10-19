@@ -18,12 +18,16 @@ import java.util.logging.Logger;
 public class ServiceImpl {
     FinanceiraDAO dao = new FinanceiraDAO();
     
-    public boolean validarLogin(LoginDTO loginDTO) {
+    public LoginDTO validarLogin(LoginDTO loginDTO) {
+        LoginDTO dto = null;
+        
         try { 
-            return this.dao.validarLogin(loginDTO) != null;
+            dto = this.dao.validarLogin(dto);
+
         } catch (SQLException ex) {
             Logger.getLogger(ServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return false;
+       
+        return dto;
     }
 }

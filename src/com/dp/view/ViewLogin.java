@@ -7,9 +7,7 @@ package com.dp.view;
 
 import com.dp.dto.LoginDTO;
 import com.dp.service.ServiceImpl;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -126,11 +124,11 @@ public class ViewLogin extends javax.swing.JFrame {
         loginDTO.setLogin(this.txtLogin.getText());
         loginDTO.setSenha(this.txtSenha.getText());
 
-        if (this.validarCampos() && service.validarLogin(loginDTO)) {
+        if (this.validarCampos() && service.validarLogin(loginDTO) != null) {
             
-            ViewGerenciarCliente frame = new ViewGerenciarCliente();
+            ViewUsuario frame = new ViewUsuario();
             frame.setVisible(true);
-            
+            frame.setLoginDTO(loginDTO);
          }
  
     }
