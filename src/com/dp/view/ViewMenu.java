@@ -11,14 +11,14 @@ import com.dp.dto.LoginDTO;
  *
  * @author igors
  */
-public class ViewUsuario extends javax.swing.JFrame {
+public class ViewMenu extends javax.swing.JFrame {
     private LoginDTO loginDTO;
     
-
     
-    
-    public ViewUsuario() {
+    public ViewMenu(LoginDTO loginDTO) {
         initComponents();
+        this.loginDTO = loginDTO;
+        this.iniciar(loginDTO);
     }
 
     /**
@@ -70,6 +70,12 @@ public class ViewUsuario extends javax.swing.JFrame {
             .addGap(0, 37, Short.MAX_VALUE)
         );
 
+        jMsg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMsgActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -99,8 +105,13 @@ public class ViewUsuario extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Buscar Cliente");
         jButton2.setMinimumSize(new java.awt.Dimension(80, 223));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jButton2);
 
         jButton1.setText("jButton1");
@@ -134,19 +145,15 @@ public class ViewUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    
- 
-    public static void main(String args[]) {
-     
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ViewUsuario().setVisible(true);
-            }
-        });
-    }
+    private void jMsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMsgActionPerformed
+       
+    }//GEN-LAST:event_jMsgActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private net.sourceforge.jdatepicker.impl.DateComponentFormatter dateComponentFormatter1;
@@ -161,8 +168,8 @@ public class ViewUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 
-   public void iniciar(){
-       this.jMsg.setText("Bem Vindo, " + getLoginDTO().getNome());
+   public void iniciar(LoginDTO aloginDTO){
+        jMsg.setText("Bem Vindo, " + aloginDTO.getLogin());
    }
     
     

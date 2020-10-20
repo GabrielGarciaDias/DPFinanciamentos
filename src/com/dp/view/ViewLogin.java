@@ -15,7 +15,9 @@ import javax.swing.JOptionPane;
  * @author igors
  */
 public class ViewLogin extends javax.swing.JFrame {
-    private ServiceImpl service;
+    private ServiceImpl service = new ServiceImpl();
+    
+    
     /**
      * Creates new form ViewLogin
      */
@@ -124,12 +126,15 @@ public class ViewLogin extends javax.swing.JFrame {
         loginDTO.setLogin(this.txtLogin.getText());
         loginDTO.setSenha(this.txtSenha.getText());
 
-        if (this.validarCampos() && service.validarLogin(loginDTO) != null) {
+        if (this.validarCampos() && getService().validarLogin(loginDTO) != null) {
             
-            ViewUsuario frame = new ViewUsuario();
+            ViewMenu frame = new ViewMenu(loginDTO);
             frame.setVisible(true);
             frame.setLoginDTO(loginDTO);
-         }
+            this.dispose();
+         }else{
+            JOptionPane.showMessageDialog(null, "Usuario não cadastrado");
+        }
  
     }
     
@@ -172,4 +177,12 @@ public class ViewLogin extends javax.swing.JFrame {
     private javax.swing.JTextField txtLogin;
     private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
+
+    public ServiceImpl getService() {
+        return service;
+    }
+
+    public void setService(ServiceImpl service) {
+        this.service = service;
+    }
 }

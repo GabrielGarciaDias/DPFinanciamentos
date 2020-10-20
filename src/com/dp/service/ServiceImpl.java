@@ -22,7 +22,7 @@ public class ServiceImpl {
         LoginDTO dto = null;
         
         try { 
-            dto = this.dao.validarLogin(dto);
+            dto = this.dao.validarLogin(loginDTO);
 
         } catch (SQLException ex) {
             Logger.getLogger(ServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
