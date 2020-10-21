@@ -37,7 +37,7 @@ public class ViewMenu extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jMsg = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        btnBuscarCliente = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -105,14 +105,14 @@ public class ViewMenu extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jButton2.setText("Buscar Cliente");
-        jButton2.setMinimumSize(new java.awt.Dimension(80, 223));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarCliente.setText("Buscar Cliente");
+        btnBuscarCliente.setMinimumSize(new java.awt.Dimension(80, 223));
+        btnBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnBuscarClienteActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton2);
+        jPanel4.add(btnBuscarCliente);
 
         jButton1.setText("jButton1");
         jPanel4.add(jButton1);
@@ -149,16 +149,16 @@ public class ViewMenu extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jMsgActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscarCliente;
     private net.sourceforge.jdatepicker.impl.DateComponentFormatter dateComponentFormatter1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel;

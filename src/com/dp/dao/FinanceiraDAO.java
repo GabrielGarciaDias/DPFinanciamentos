@@ -1,6 +1,7 @@
 package com.dp.dao;
 
 import com.dp.dto.LoginDTO;
+import com.dp.dto.PessoaDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -46,4 +47,6 @@ public class FinanceiraDAO {
         }
         return login;
     }
+    
+
 }
