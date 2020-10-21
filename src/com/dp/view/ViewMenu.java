@@ -38,8 +38,8 @@ public class ViewMenu extends javax.swing.JFrame {
         jMsg = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         btnBuscarCliente = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnFinanciamentos = new javax.swing.JButton();
+        btnCobranca = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -114,12 +114,12 @@ public class ViewMenu extends javax.swing.JFrame {
         });
         jPanel4.add(btnBuscarCliente);
 
-        jButton1.setText("jButton1");
-        jPanel4.add(jButton1);
+        btnFinanciamentos.setText("Financiamentos");
+        jPanel4.add(btnFinanciamentos);
 
-        jButton3.setText("jButton2");
-        jButton3.setMinimumSize(new java.awt.Dimension(80, 223));
-        jPanel4.add(jButton3);
+        btnCobranca.setText("Cobrança");
+        btnCobranca.setMinimumSize(new java.awt.Dimension(80, 223));
+        jPanel4.add(btnCobranca);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -157,9 +157,9 @@ public class ViewMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarCliente;
+    private javax.swing.JButton btnCobranca;
+    private javax.swing.JButton btnFinanciamentos;
     private net.sourceforge.jdatepicker.impl.DateComponentFormatter dateComponentFormatter1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel;
     private javax.swing.JTextField jMsg;
