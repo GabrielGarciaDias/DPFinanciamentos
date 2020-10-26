@@ -115,6 +115,11 @@ public class ViewMenu extends javax.swing.JFrame {
         jPanel4.add(btnBuscarCliente);
 
         btnFinanciamentos.setText("Financiamentos");
+        btnFinanciamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinanciamentosActionPerformed(evt);
+            }
+        });
         jPanel4.add(btnFinanciamentos);
 
         btnCobranca.setText("Cobrança");
@@ -155,6 +160,10 @@ public class ViewMenu extends javax.swing.JFrame {
         this.dispose();
        
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
+
+    private void btnFinanciamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinanciamentosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFinanciamentosActionPerformed
 
 
 

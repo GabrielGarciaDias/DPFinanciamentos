@@ -92,6 +92,11 @@ public class ViewConsultaBoletosPendentes extends javax.swing.JFrame {
         jCheckBox1.setText("Confirmar");
 
         btnCobranca.setText("Gerar Cobrança");
+        btnCobranca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCobrancaActionPerformed(evt);
+            }
+        });
 
         btnVoltar.setText("Voltar");
 
@@ -174,6 +179,10 @@ public class ViewConsultaBoletosPendentes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCobrancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCobrancaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCobrancaActionPerformed
 
     /**
      * @param args the command line arguments

@@ -69,6 +69,11 @@ public class ViewBuscarCliente_DesativarConta extends javax.swing.JFrame {
         });
 
         btnBoletos.setText("Boletos");
+        btnBoletos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBoletosActionPerformed(evt);
+            }
+        });
 
         btnDesativarConta.setText("Desativar Conta");
         btnDesativarConta.setEnabled(false);
@@ -142,8 +147,12 @@ public class ViewBuscarCliente_DesativarConta extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        // TODO add your handling code here:
+       this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnBoletosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBoletosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBoletosActionPerformed
 
     public void validarCampo(){
         PessoaDTO dto = null;
