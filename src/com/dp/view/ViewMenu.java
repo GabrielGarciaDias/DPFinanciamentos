@@ -150,7 +150,10 @@ public class ViewMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMsgActionPerformed
 
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
-        
+        ViewBuscarCliente_DesativarConta jframe = new ViewBuscarCliente_DesativarConta();
+        jframe.setVisible(true);
+        this.dispose();
+       
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
 

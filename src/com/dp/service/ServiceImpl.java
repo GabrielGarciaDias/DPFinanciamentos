@@ -7,6 +7,7 @@ package com.dp.service;
 
 import com.dp.dao.FinanceiraDAO;
 import com.dp.dto.LoginDTO;
+import com.dp.dto.PessoaDTO;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,5 +30,24 @@ public class ServiceImpl {
         }
        
         return dto;
+    }
+    
+    public PessoaDTO buscarCliente(PessoaDTO pessoaDTO){
+        PessoaDTO dto = null;
+        
+        try{
+            dto = this.dao.buscarCliente(pessoaDTO);
+        }catch(SQLException ex){
+            Logger.getLogger(ServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return dto;
+    }
+ 
+    public void desativarConta(String numeroDocumento, String motivo){
+        try{
+            this.dao.desativarConta(numeroDocumento, motivo);
+        }catch(SQLException ex){
+            Logger.getLogger(ServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

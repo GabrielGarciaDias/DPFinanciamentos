@@ -5,15 +5,22 @@
  */
 package com.dp.view;
 
+import com.dp.dto.PessoaDTO;
+import com.dp.service.ServiceImpl;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import javafx.util.converter.LocalDateStringConverter;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author GARCIA
  */
 public class ViewBuscarCliente_DesativarConta extends javax.swing.JFrame {
-
-    /**
-     * Creates new form ViewBuscarCliente_DesativarConta
-     */
+    private ServiceImpl service = new ServiceImpl();
+    
     public ViewBuscarCliente_DesativarConta() {
         initComponents();
     }
@@ -39,8 +46,12 @@ public class ViewBuscarCliente_DesativarConta extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnConsultar.setText("Consultar");
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
 
-        txtCpf.setText("402.321.213-51");
         txtCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCpfActionPerformed(evt);
@@ -51,10 +62,16 @@ public class ViewBuscarCliente_DesativarConta extends javax.swing.JFrame {
         jLabel1.setToolTipText("");
 
         btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
 
         btnBoletos.setText("Boletos");
 
         btnDesativarConta.setText("Desativar Conta");
+        btnDesativarConta.setEnabled(false);
         btnDesativarConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDesativarContaActionPerformed(evt);
@@ -73,10 +90,9 @@ public class ViewBuscarCliente_DesativarConta extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-                        .addComponent(btnConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCpf)
+                    .addComponent(btnConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -113,43 +129,59 @@ public class ViewBuscarCliente_DesativarConta extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCpfActionPerformed
 
     private void btnDesativarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesativarContaActionPerformed
-        // TODO add your handling code here:
+       
+        
+        ViewContinuacao_DesativarConta jframe = 
+                new ViewContinuacao_DesativarConta(txtCpf.getText());
+        jframe.setVisible(true);
+        
     }//GEN-LAST:event_btnDesativarContaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewBuscarCliente_DesativarConta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewBuscarCliente_DesativarConta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewBuscarCliente_DesativarConta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewBuscarCliente_DesativarConta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+          this.validarCampo();
+    }//GEN-LAST:event_btnConsultarActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ViewBuscarCliente_DesativarConta().setVisible(true);
-            }
-        });
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
+    public void validarCampo(){
+        PessoaDTO dto = null;
+        PessoaDTO pessoa = null;
+        
+        if("".equals(txtCpf.getText())){
+            JOptionPane.showMessageDialog(null, "Preencha o campo");
+            this.btnDesativarConta.setEnabled(false);
+        }else{
+            dto = new PessoaDTO();
+            dto.setCpfCnpj(txtCpf.getText());
+
+            pessoa = this.service.buscarCliente(dto);
+            
+            if(pessoa !=null) this.incluirInformacoesCliente(pessoa);
+            this.btnDesativarConta.setEnabled(true);
+        }
+       
     }
+    
+    public void incluirInformacoesCliente(PessoaDTO pessoa){
+        txtCpf.setText(pessoa.getCpfCnpj());
+        txtInfo.setText(this.buildStringInfo(pessoa));
+        
+    }
+    
+    public String buildStringInfo(PessoaDTO pessoa){
+        StringBuilder info = new StringBuilder();
+
+        
+        info.append("Nome : " + pessoa.getNome())
+                .append("\nCPF/CNPJ : " + pessoa.getCpfCnpj())
+                .append("\nRG : " + pessoa.getRg());
+        
+        
+        return info.toString();
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBoletos;

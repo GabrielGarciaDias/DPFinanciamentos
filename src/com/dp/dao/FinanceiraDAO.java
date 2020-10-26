@@ -2,18 +2,21 @@ package com.dp.dao;
 
 import com.dp.dto.LoginDTO;
 import com.dp.dto.PessoaDTO;
+import com.dp.service.ServiceImpl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class FinanceiraDAO {
 
     public LoginDTO validarLogin(LoginDTO dto) throws SQLException {
 
-        String sql = "select LOGINid, LOGIN, NOME, CPF, EMAIL, SENHA, TIPOUSER"
+        String sql = "select LOGINid , LOGIN , NOME , CPFCNPJ ,SENHA "
                 + " FROM DPFinanciamentos.dbo.LOGIN "
-                + " WHERE LOGIN = ? AND SENHA = ? ";
+                + " WHERE LOGIN = ? AND SENHA = ? AND TIPOUSER = ? ";
         Connection con = null;
         PreparedStatement ps = null;
         
@@ -24,20 +27,16 @@ public class FinanceiraDAO {
             ps = con.prepareStatement(sql);
             ps.setString(i++, dto.getLogin());
             ps.setString(i++, dto.getSenha());
+            ps.setInt(i++, Constantes.ZERO);
             ResultSet rs = ps.executeQuery();
 
             while(rs.next()){
-               login = new LoginDTO();
-                
-                login.setCpf(rs.getString("CPF"));
-                login.setEmail(rs.getString("EMAIL"));
+               login = new LoginDTO();             
+                login.setCpf(rs.getString("CPFCNPJ"));
                 login.setLogin(rs.getString("LOGIN"));
                 login.setLoginID(rs.getInt("LOGINID"));
                 login.setNome(rs.getString("NOME"));
-                login.setSenha(rs.getString("SENHA"));
-                login.setTipoUser(rs.getInt("TIPOUSER"));
-                
-                
+
             }
          
         } catch (SQLException e) {
@@ -48,5 +47,74 @@ public class FinanceiraDAO {
         return login;
     }
     
+    public PessoaDTO buscarCliente(PessoaDTO dto) throws SQLException {
+
+        StringBuilder sql = new StringBuilder();
+        
+        sql.append(" select CONCAT(cad.CAD_NOME ,cad.CAD_FANTASIA) as nome , ");
+        sql.append(" CPFCNPJ , rgInscricao , DTN_Fundacao , EMAIL ,CELULAR ,TEL_COMERCIAL");
+        sql.append(" from CADASTRO cad ");
+        sql.append(" INNER JOIN ENDERECO endereco ");
+        sql.append(" ON endereco.CADid  = cad.CADid ");
+        sql.append(" WHERE cad.CPFCNPJ LIKE ?");
+
+        Connection con = null;
+        PreparedStatement ps = null;
+        
+        PessoaDTO pessoa = null;
+        int i = 1;
+        try {
+            con = Connect.getConnection();
+            ps = con.prepareStatement(sql.toString());
+            ps.setString(i++, "%" + dto.getCpfCnpj() + "%");
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+               pessoa = new PessoaDTO();             
+               pessoa.setCpfCnpj(rs.getString("CPFCNPJ"));
+               pessoa.setNome(rs.getString("nome"));
+               pessoa.setRg(rs.getString("rgInscricao"));
+               pessoa.setEmail(rs.getString("EMAIL"));
+               pessoa.setTelefone(rs.getString("CELULAR"));
+
+            }
+         
+        } catch (SQLException e) {
+           System.out.println("Erro: " + e);
+        } finally {
+            con.close();
+        }
+        return pessoa;
+    }
+    
+    public void desativarConta(String numeroDocumento, String motivo) throws SQLException{
+        
+        StringBuilder sql = new StringBuilder();    
+        
+        sql.append("UPDATE CADASTRO SET FlAtivo = ?, DsAtivo = ? WHERE CPFCNPJ = ? ");
+        
+        Connection con = null;
+        PreparedStatement ps = null;
+        int i = 1;
+        
+        try{
+            
+            con = Connect.getConnection();
+            ps = con.prepareStatement(sql.toString());
+            
+            ps.setString(i++, Constantes.SIM);
+            ps.setString(i++, numeroDocumento);
+            ps.setString(i++, motivo);
+            
+            ps.execute();
+            
+        } catch (SQLException e) {
+           Logger.getLogger(ServiceImpl.class.getName()).log(Level.SEVERE, null, e);
+        }finally{
+            con.close();
+       
+        }
+    }
 
 }

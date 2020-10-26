@@ -8,9 +8,10 @@ public class PessoaDTO implements Serializable {
     
     
     private String nome;
+
     private String endereco;
     private String telefone;
-    private String cpf;
+    private String cpfCnpj;
     private String rg;
     private String email;
 
@@ -38,13 +39,6 @@ public class PessoaDTO implements Serializable {
         this.telefone = telefone;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
 
     public String getRg() {
         return rg;
@@ -61,6 +55,15 @@ public class PessoaDTO implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getCpfCnpj() {
+        return cpfCnpj;
+    }
+
+    public void setCpfCnpj(String cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
+    }
+    
 
     
     
