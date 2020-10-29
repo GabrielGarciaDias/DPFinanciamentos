@@ -38,8 +38,6 @@ public class ViewMenu extends javax.swing.JFrame {
         jMsg = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         btnBuscarCliente = new javax.swing.JButton();
-        btnFinanciamentos = new javax.swing.JButton();
-        btnCobranca = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -114,18 +112,6 @@ public class ViewMenu extends javax.swing.JFrame {
         });
         jPanel4.add(btnBuscarCliente);
 
-        btnFinanciamentos.setText("Financiamentos");
-        btnFinanciamentos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFinanciamentosActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btnFinanciamentos);
-
-        btnCobranca.setText("Cobrança");
-        btnCobranca.setMinimumSize(new java.awt.Dimension(80, 223));
-        jPanel4.add(btnCobranca);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -161,16 +147,10 @@ public class ViewMenu extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
-    private void btnFinanciamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinanciamentosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFinanciamentosActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarCliente;
-    private javax.swing.JButton btnCobranca;
-    private javax.swing.JButton btnFinanciamentos;
     private net.sourceforge.jdatepicker.impl.DateComponentFormatter dateComponentFormatter1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel;
