@@ -1,12 +1,15 @@
 package com.dp.dao;
 
+import com.dp.dto.BoletoDTO;
 import com.dp.dto.LoginDTO;
 import com.dp.dto.PessoaDTO;
 import com.dp.service.ServiceImpl;
+import java.util.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -116,5 +119,52 @@ public class FinanceiraDAO {
        
         }
     }
+    
+     public List<BoletoDTO> carregarBoletos(PessoaDTO pessoa) throws SQLException{
+        
+        StringBuilder sql = new StringBuilder();    
+        
+        sql.append(" SELECT BOLETOid, CAD_NOME, CPFCNPJ, ")
+                .append(" PGTO_PARCELA_NUM, VALOR, CADid, DT_PGTO, DT_VENCIMENTO, Status")
+                .append(" FROM BOLETOS ")
+                .append(" WHERE CPFCNPJ = ?");
+ 
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<BoletoDTO> lista = new ArrayList<BoletoDTO>();
+        BoletoDTO boleto;
+        int i = 1;
+        
+        try{
+            
+            con = Connect.getConnection();
+            ps = con.prepareStatement(sql.toString());
+            ps.setString(i++, pessoa.getCpfCnpj());
+            rs = ps.executeQuery();
+            
+            
+            while(rs.next()){
+                boleto = new BoletoDTO();
+                
+                boleto.setCpf(rs.getString("CPFCNPJ"));
+                boleto.setDtPagamento(rs.getDate("DT_PGTO"));
+                boleto.setDtVencimento(rs.getDate("DT_VENCIMENTO"));
+                boleto.setNome(rs.getString("CAD_NOME"));
+                boleto.setStatus(rs.getString("Status"));
+                
+                lista.add(boleto);
+            }
+           
+        } catch (SQLException e) {
+           Logger.getLogger(ServiceImpl.class.getName()).log(Level.SEVERE, null, e);
+        }finally{
+            con.close();
+        }
+        
+        return lista;
+    }
+     
+
 
 }

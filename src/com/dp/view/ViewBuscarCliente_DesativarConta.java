@@ -20,8 +20,10 @@ import javax.swing.JOptionPane;
  */
 public class ViewBuscarCliente_DesativarConta extends javax.swing.JFrame {
     private ServiceImpl service = new ServiceImpl();
+    private PessoaDTO pessoa;
     
     public ViewBuscarCliente_DesativarConta() {
+        
         initComponents();
     }
 
@@ -151,7 +153,9 @@ public class ViewBuscarCliente_DesativarConta extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnBoletosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBoletosActionPerformed
-        // TODO add your handling code here:
+        ViewBoletosPendentes jframe = new ViewBoletosPendentes(getPessoa());
+        
+        jframe.setVisible(true);
     }//GEN-LAST:event_btnBoletosActionPerformed
 
     public void validarCampo(){
@@ -167,8 +171,10 @@ public class ViewBuscarCliente_DesativarConta extends javax.swing.JFrame {
 
             pessoa = this.service.buscarCliente(dto);
             
-            if(pessoa !=null) this.incluirInformacoesCliente(pessoa);
-            this.btnDesativarConta.setEnabled(true);
+            if(pessoa !=null) 
+                this.incluirInformacoesCliente(pessoa);
+                this.btnDesativarConta.setEnabled(true);
+                setPessoa(pessoa);
         }
        
     }
@@ -202,4 +208,12 @@ public class ViewBuscarCliente_DesativarConta extends javax.swing.JFrame {
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextArea txtInfo;
     // End of variables declaration//GEN-END:variables
+
+    public PessoaDTO getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(PessoaDTO pessoa) {
+        this.pessoa = pessoa;
+    }
 }

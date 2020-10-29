@@ -6,9 +6,11 @@
 package com.dp.service;
 
 import com.dp.dao.FinanceiraDAO;
+import com.dp.dto.BoletoDTO;
 import com.dp.dto.LoginDTO;
 import com.dp.dto.PessoaDTO;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -49,5 +51,12 @@ public class ServiceImpl {
         }catch(SQLException ex){
             Logger.getLogger(ServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public List<BoletoDTO> buscarBoleto(PessoaDTO pessoa) throws SQLException{
+     
+            return this.dao.carregarBoletos(pessoa);
+       
+       
     }
 }

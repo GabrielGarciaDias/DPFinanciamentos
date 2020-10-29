@@ -5,8 +5,11 @@
         <group>
             <file>file:/C:/developer/Tcc/DPFinanciamentos/DPFinanciamentos/src/com/dp/view/ViewMenu.java</file>
             <file>file:/C:/developer/Tcc/DPFinanciamentos/DPFinanciamentos/src/com/dp/view/ViewBoletosPendentes.java</file>
+            <file>file:/C:/developer/Tcc/DPFinanciamentos/DPFinanciamentos/src/com/dp/dao/FinanceiraDAO.java</file>
             <file>file:/C:/developer/Tcc/DPFinanciamentos/DPFinanciamentos/src/com/dp/view/ViewContinuacao_DesativarConta.java</file>
+            <file>file:/C:/developer/Tcc/DPFinanciamentos/DPFinanciamentos/src/com/dp/view/ViewLogin.java</file>
             <file>file:/C:/developer/Tcc/DPFinanciamentos/DPFinanciamentos/src/com/dp/view/ViewBuscarCliente_DesativarConta.java</file>
+            <file>file:/C:/developer/Tcc/DPFinanciamentos/DPFinanciamentos/src/com/dp/view/ViewAprovacaoFinanciamentos.java</file>
             <file>file:/C:/developer/Tcc/DPFinanciamentos/DPFinanciamentos/src/com/dp/view/ViewConsultaBoletosPendentes.java</file>
         </group>
     </open-files>
