@@ -38,7 +38,10 @@ public class ViewMenu extends javax.swing.JFrame {
         jMsg = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         btnBuscarCliente = new javax.swing.JButton();
+<<<<<<< HEAD
         jCalendar1 = new com.toedter.calendar.JCalendar();
+=======
+>>>>>>> 02e0924da71a9df79f318b3cf8bc0c2820f86e8d
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
