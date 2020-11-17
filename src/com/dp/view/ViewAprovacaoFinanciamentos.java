@@ -61,7 +61,7 @@ public class ViewAprovacaoFinanciamentos extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(jTextPane1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnMenuInicial.setText("Menu Inicial");
 

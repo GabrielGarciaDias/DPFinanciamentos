@@ -36,7 +36,7 @@ public class ViewContinuacao_DesativarConta extends javax.swing.JFrame {
         btnVoltar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         txtMotivo.setColumns(20);
         txtMotivo.setRows(5);

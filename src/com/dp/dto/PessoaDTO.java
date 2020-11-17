@@ -14,6 +14,9 @@ public class PessoaDTO implements Serializable {
     private String cpfCnpj;
     private String rg;
     private String email;
+    private String FlAtivo; 
+    
+    
 
     public String getNome() {
         return nome;
@@ -62,6 +65,14 @@ public class PessoaDTO implements Serializable {
 
     public void setCpfCnpj(String cpfCnpj) {
         this.cpfCnpj = cpfCnpj;
+    }
+
+    public String getFlAtivo() {
+        return FlAtivo;
+    }
+
+    public void setFlAtivo(String FlAtivo) {
+        this.FlAtivo = FlAtivo;
     }
     
 

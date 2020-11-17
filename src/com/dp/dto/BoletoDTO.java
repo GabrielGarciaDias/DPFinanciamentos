@@ -13,6 +13,7 @@ import java.util.Date;
  * @author igors
  */
 public class BoletoDTO {
+    private Long codigoBoleto;
     private String nome;
     private String cpf;
     private int qtdeParcelas;
@@ -77,6 +78,14 @@ public class BoletoDTO {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Long getCodigoBoleto() {
+        return codigoBoleto;
+    }
+
+    public void setCodigoBoleto(Long codigoBoleto) {
+        this.codigoBoleto = codigoBoleto;
     }
     
     

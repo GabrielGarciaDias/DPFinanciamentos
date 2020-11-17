@@ -38,8 +38,7 @@ public class ViewMenu extends javax.swing.JFrame {
         jMsg = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         btnBuscarCliente = new javax.swing.JButton();
-        btnFinanciamentos = new javax.swing.JButton();
-        btnCobranca = new javax.swing.JButton();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -52,7 +51,7 @@ public class ViewMenu extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel.setText("DPFinanciamentos");
@@ -70,6 +69,7 @@ public class ViewMenu extends javax.swing.JFrame {
             .addGap(0, 37, Short.MAX_VALUE)
         );
 
+        jMsg.setEditable(false);
         jMsg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMsgActionPerformed(evt);
@@ -114,27 +114,16 @@ public class ViewMenu extends javax.swing.JFrame {
         });
         jPanel4.add(btnBuscarCliente);
 
-        btnFinanciamentos.setText("Financiamentos");
-        btnFinanciamentos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFinanciamentosActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btnFinanciamentos);
-
-        btnCobranca.setText("Cobrança");
-        btnCobranca.setMinimumSize(new java.awt.Dimension(80, 223));
-        jPanel4.add(btnCobranca);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -144,7 +133,9 @@ public class ViewMenu extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -161,17 +152,12 @@ public class ViewMenu extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
-    private void btnFinanciamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinanciamentosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFinanciamentosActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarCliente;
-    private javax.swing.JButton btnCobranca;
-    private javax.swing.JButton btnFinanciamentos;
     private net.sourceforge.jdatepicker.impl.DateComponentFormatter dateComponentFormatter1;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel;
     private javax.swing.JTextField jMsg;

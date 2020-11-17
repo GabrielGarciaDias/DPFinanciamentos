@@ -7,11 +7,7 @@ package com.dp.view;
 
 import com.dp.dto.PessoaDTO;
 import com.dp.service.ServiceImpl;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import javafx.util.converter.LocalDateStringConverter;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -25,6 +21,7 @@ public class ViewBuscarCliente_DesativarConta extends javax.swing.JFrame {
     public ViewBuscarCliente_DesativarConta() {
         
         initComponents();
+        
     }
 
     /**
@@ -45,7 +42,7 @@ public class ViewBuscarCliente_DesativarConta extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtInfo = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnConsultar.setText("Consultar");
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -171,7 +168,7 @@ public class ViewBuscarCliente_DesativarConta extends javax.swing.JFrame {
 
             pessoa = this.service.buscarCliente(dto);
             
-            if(pessoa !=null) 
+            if(pessoa !=null  ) 
                 this.incluirInformacoesCliente(pessoa);
                 this.btnDesativarConta.setEnabled(true);
                 setPessoa(pessoa);
@@ -191,7 +188,9 @@ public class ViewBuscarCliente_DesativarConta extends javax.swing.JFrame {
         
         info.append("Nome : " + pessoa.getNome())
                 .append("\nCPF/CNPJ : " + pessoa.getCpfCnpj())
-                .append("\nRG : " + pessoa.getRg());
+                .append("\nRG : " + pessoa.getRg())
+                .append("\nTel: " + pessoa.getTelefone())
+                .append("\nEndereco : " + pessoa.getEndereco());
         
         
         return info.toString();

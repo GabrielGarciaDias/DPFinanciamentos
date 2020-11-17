@@ -10,6 +10,7 @@ import com.dp.dto.BoletoDTO;
 import com.dp.dto.LoginDTO;
 import com.dp.dto.PessoaDTO;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -53,10 +54,26 @@ public class ServiceImpl {
         }
     }
     
-    public List<BoletoDTO> buscarBoleto(PessoaDTO pessoa) throws SQLException{
-     
-            return this.dao.carregarBoletos(pessoa);
-       
-       
+    public List<BoletoDTO> buscarBoleto(PessoaDTO pessoa, String filtro)  {
+        List<BoletoDTO> listaBoleto = new ArrayList<>();
+        try {
+            listaBoleto = this.dao.carregarBoletos(pessoa,filtro);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listaBoleto;
+    }
+    
+    public BoletoDTO buscarBoletoPorId(Long idBoleto){
+        BoletoDTO boleto = new BoletoDTO();
+        
+        try{
+            boleto = this.dao.buscarBoletoPorId(idBoleto);
+        }catch (SQLException ex) {
+            Logger.getLogger(ServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return boleto;
     }
 }

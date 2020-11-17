@@ -8,6 +8,9 @@ package com.dp.dao;
 
 public class Constantes {
     public static int ZERO = 0;
-    public static String SIM = "S";        
-            
+    public static String SIM = "S";   
+    public static String ATRASADO = "ATRASADO";
+    public static String ABERTO = "ABERTO";
+    public static String PAGO = "PAGO";
+    
 }

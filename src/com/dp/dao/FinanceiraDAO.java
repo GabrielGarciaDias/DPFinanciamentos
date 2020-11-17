@@ -54,12 +54,12 @@ public class FinanceiraDAO {
 
         StringBuilder sql = new StringBuilder();
         
-        sql.append(" select CONCAT(cad.CAD_NOME ,cad.CAD_FANTASIA) as nome , ");
-        sql.append(" CPFCNPJ , rgInscricao , DTN_Fundacao , EMAIL ,CELULAR ,TEL_COMERCIAL");
+        sql.append(" select endereco.rua, endereco.numero ,CONCAT(cad.CAD_NOME ,cad.CAD_FANTASIA) as nome , ");
+        sql.append(" CPFCNPJ , rgInscricao , DTN_Fundacao , EMAIL ,CELULAR ,TEL_COMERCIAL,FlAtivo");
         sql.append(" from CADASTRO cad ");
         sql.append(" INNER JOIN ENDERECO endereco ");
         sql.append(" ON endereco.CADid  = cad.CADid ");
-        sql.append(" WHERE cad.CPFCNPJ LIKE ?");
+        sql.append(" WHERE cad.CPFCNPJ LIKE ?  ");
 
         Connection con = null;
         PreparedStatement ps = null;
@@ -80,6 +80,8 @@ public class FinanceiraDAO {
                pessoa.setRg(rs.getString("rgInscricao"));
                pessoa.setEmail(rs.getString("EMAIL"));
                pessoa.setTelefone(rs.getString("CELULAR"));
+               pessoa.setFlAtivo(rs.getString("FlAtivo"));
+               pessoa.setEndereco("Rua : " + rs.getString("rua") + " Numero : " + rs.getString("numero"));
 
             }
          
@@ -120,14 +122,14 @@ public class FinanceiraDAO {
         }
     }
     
-     public List<BoletoDTO> carregarBoletos(PessoaDTO pessoa) throws SQLException{
+     public List<BoletoDTO> carregarBoletos(PessoaDTO pessoa,String filtro) throws SQLException{
         
         StringBuilder sql = new StringBuilder();    
         
         sql.append(" SELECT BOLETOid, CAD_NOME, CPFCNPJ, ")
                 .append(" PGTO_PARCELA_NUM, VALOR, CADid, DT_PGTO, DT_VENCIMENTO, Status")
                 .append(" FROM BOLETOS ")
-                .append(" WHERE CPFCNPJ = ?");
+                .append(" WHERE CPFCNPJ = ? AND Status = ? ");
  
         Connection con = null;
         PreparedStatement ps = null;
@@ -141,6 +143,7 @@ public class FinanceiraDAO {
             con = Connect.getConnection();
             ps = con.prepareStatement(sql.toString());
             ps.setString(i++, pessoa.getCpfCnpj());
+            ps.setString(i++, filtro);
             rs = ps.executeQuery();
             
             
@@ -152,6 +155,7 @@ public class FinanceiraDAO {
                 boleto.setDtVencimento(rs.getDate("DT_VENCIMENTO"));
                 boleto.setNome(rs.getString("CAD_NOME"));
                 boleto.setStatus(rs.getString("Status"));
+                boleto.setCodigoBoleto(rs.getLong("BoletoID"));
                 
                 lista.add(boleto);
             }
@@ -165,6 +169,53 @@ public class FinanceiraDAO {
         return lista;
     }
      
+     
+     public BoletoDTO buscarBoletoPorId(Long idBoleto)throws SQLException{
+         
+          StringBuilder sql = new StringBuilder();    
+        
+        sql.append(" SELECT BOLETOid, CAD_NOME, CPFCNPJ, ")
+                .append(" PGTO_PARCELA_NUM, VALOR, CADid, DT_PGTO, DT_VENCIMENTO, Status")
+                .append(" FROM BOLETOS ")
+                .append(" WHERE BOLETOid = ? ");
+        
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+   
+        BoletoDTO boleto  = new BoletoDTO();;
+        int i = 1;
+         
+        try{
+            
+            con = Connect.getConnection();
+            ps = con.prepareStatement(sql.toString());
+            ps.setLong(i++, idBoleto);
+ 
+            rs = ps.executeQuery();
+            
+            
+            while(rs.next()){
+                
+                
+                boleto.setCpf(rs.getString("CPFCNPJ"));
+                boleto.setDtPagamento(rs.getDate("DT_PGTO"));
+                boleto.setDtVencimento(rs.getDate("DT_VENCIMENTO"));
+                boleto.setNome(rs.getString("CAD_NOME"));
+                boleto.setStatus(rs.getString("Status"));
+                boleto.setCodigoBoleto(rs.getLong("BoletoID"));
+                
+               
+            }
+           
+        } catch (SQLException e) {
+           Logger.getLogger(ServiceImpl.class.getName()).log(Level.SEVERE, null, e);
+        }finally{
+            con.close();
+        }
+        
+        return boleto;
+     }
 
 
 }
