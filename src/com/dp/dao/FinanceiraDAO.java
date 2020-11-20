@@ -174,9 +174,12 @@ public class FinanceiraDAO {
          
           StringBuilder sql = new StringBuilder();    
         
-        sql.append(" SELECT BOLETOid, CAD_NOME, CPFCNPJ, ")
-                .append(" PGTO_PARCELA_NUM, VALOR, CADid, DT_PGTO, DT_VENCIMENTO, Status")
-                .append(" FROM BOLETOS ")
+        sql.append(" SELECT bo.BOLETOid, bo.CAD_NOME, bo.CPFCNPJ, ")
+                .append(" bo.PGTO_PARCELA_NUM, bo.VALOR, bo.CADid, bo.DT_PGTO, bo.DT_VENCIMENTO, bo.Status"
+                        + " ,cd.DTN_Fundacao , cd.EMAIL ")
+                .append(" FROM BOLETOS bo ")
+                .append(" INNER JOIN CADASTRO cd ")
+                .append("   on cd.CADid = bo.CADid ")
                 .append(" WHERE BOLETOid = ? ");
         
         Connection con = null;
@@ -204,8 +207,9 @@ public class FinanceiraDAO {
                 boleto.setNome(rs.getString("CAD_NOME"));
                 boleto.setStatus(rs.getString("Status"));
                 boleto.setCodigoBoleto(rs.getLong("BoletoID"));
-                
-               
+                boleto.setDtVencimento(rs.getDate("DTN_Fundacao"));
+                boleto.setEmail(rs.getString("EMAIL"));
+        
             }
            
         } catch (SQLException e) {

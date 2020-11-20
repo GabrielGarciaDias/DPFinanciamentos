@@ -21,9 +21,11 @@ public class BoletoDTO {
     private Date dtPagamento;
     private Date dtVencimento;
     private String status;
-    
+    private String email;
     
 
+    
+    
     public String getNome() {
         return nome;
     }
@@ -86,6 +88,14 @@ public class BoletoDTO {
 
     public void setCodigoBoleto(Long codigoBoleto) {
         this.codigoBoleto = codigoBoleto;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     
     
